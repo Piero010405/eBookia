@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 import BookCard from "@/components/BookCard";
 import CartSidebar from "@/components/CartSidebar";
 import { getBooks } from "@/services/bookService";
-import { Book } from "@/types/book"; // Asegúrate de importar el tipo
+import { Book } from "@/models/Book";
 
 export default function HomePage() {
   const [books, setBooks] = useState<Book[]>([]);
