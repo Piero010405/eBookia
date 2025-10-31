@@ -19,7 +19,7 @@ export default function HomePage() {
   const fetchBooks = async () => {
     setLoading(true);
     try {
-      const data = await getBooks(page, pageSize, search);
+      const data = await getBooks(page, pageSize, search, showOnlyOffers);
       setBooks(data);
     } catch (error) {
       console.error("Error fetching books:", error);
@@ -28,9 +28,11 @@ export default function HomePage() {
     }
   };
 
+
   useEffect(() => {
     fetchBooks();
-  }, [page, search]);
+  }, [page, search, showOnlyOffers]);
+
 
   // Filtrar libros según el estado del filtro
   const filteredBooks = showOnlyOffers
@@ -63,7 +65,10 @@ export default function HomePage() {
             </div>
             
             <button
-              onClick={() => setShowOnlyOffers(!showOnlyOffers)}
+              onClick={() => {
+                setShowOnlyOffers(!showOnlyOffers);
+                setPage(1);
+              }}
               className={`
                 px-5 py-2 rounded-lg font-medium text-sm transition-all duration-300
                 flex items-center gap-2
