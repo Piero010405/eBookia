@@ -1,9 +1,25 @@
 "use client";
+import { useRouter } from "next/navigation";
 import { useCart } from "@/hooks/useCart";
-import { FaCross } from "react-icons/fa6";
+import { useAuth } from "@/hooks/useAuth";
+import { showToast } from "nextjs-toast-notify";
+import { FaTimes } from "react-icons/fa";
 
 export default function CartSidebar({ onClose }: { onClose: () => void }) {
   const { cart, removeFromCart, total } = useCart();
+  const { user } = useAuth();
+  const router = useRouter();
+
+  const handlePay = () => {
+    if (!user) {
+      router.push("/login");
+      return;
+    }
+    showToast.success("✅ Compra realizada con éxito", {
+      duration: 4000,
+      position: "top-right",
+    });
+  };
 
   return (
     <div className="fixed inset-0 bg-black/50 z-40 flex justify-end">
@@ -11,7 +27,7 @@ export default function CartSidebar({ onClose }: { onClose: () => void }) {
         <div className="flex justify-between items-center p-4 border-b">
           <h2 className="text-xl font-bold">Tu Carrito</h2>
           <button onClick={onClose} className="text-gray-600 hover:text-black">
-            <FaCross />
+            <FaTimes />
           </button>
         </div>
 
@@ -40,7 +56,10 @@ export default function CartSidebar({ onClose }: { onClose: () => void }) {
 
         <div className="border-t p-4">
           <p className="text-lg font-semibold mb-2">Total: S/ {total.toFixed(2)}</p>
-          <button className="w-full bg-[#23b5bf] text-white py-2 rounded hover:bg-cyan-600">
+          <button
+            onClick={handlePay}
+            className="w-full bg-[#23b5bf] text-white py-2 rounded hover:bg-cyan-600"
+          >
             Pagar
           </button>
         </div>

@@ -1,12 +1,10 @@
-import { supabase } from "@/lib/supabaseClient";
-import { Book } from "@/models/Book";
-
-export async function getBooks(page = 1, pageSize = 20): Promise<Book[]> {
-  const { data, error } = await supabase
-    .from("books")
-    .select("*")
-    .range((page - 1) * pageSize, page * pageSize - 1);
-
-  if (error) throw error;
-  return data || [];
+export async function getBooks(page = 1, pageSize = 20, search = "") {
+  const params = new URLSearchParams({
+    page: page.toString(),
+    pageSize: pageSize.toString(),
+    search,
+  });
+  const res = await fetch(`/api/books?${params.toString()}`);
+  if (!res.ok) throw new Error("Error fetching books");
+  return res.json();
 }
