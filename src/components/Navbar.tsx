@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { FaShoppingCart } from "react-icons/fa";
 import { useRouter } from "next/navigation";
-import { useAuth } from "@/hooks/useAuth";
+import { useAuth } from "@/context/AuthProvider";
 import { useState } from "react";
 
 export default function Navbar({

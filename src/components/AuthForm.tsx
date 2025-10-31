@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { useAuth } from "@/hooks/useAuth";
+import { useAuth } from "@/context/AuthProvider";
 
 export default function AuthForm() {
   const { login, register } = useAuth();
@@ -9,8 +9,17 @@ export default function AuthForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (mode === "login") await login(form.email, form.password);
-    else await register(form.fullName, form.email, form.password);
+    try {
+      if (mode === "login") {
+        await login(form.email, form.password);
+      } else {
+        await register(form.fullName, form.email, form.password);
+      }
+      window.location.href = "/"; // Redirige al home tras login o registro
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+      alert(error.message);
+    }
   };
 
   return (
