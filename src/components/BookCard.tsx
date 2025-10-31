@@ -16,7 +16,7 @@ export default function BookCard({ book }: { book: any }) {
   const isAmazonUrl = imageUrl.startsWith('http://images.amazon.com/');
 
   return (
-    <div className="bg-white text-dark rounded-xl p-4 flex flex-col shadow hover:shadow-lg transition">
+    <div className="bg-white text-[#0d0d0d] rounded-xl p-4 flex flex-col shadow hover:shadow-lg transition">
       <div className="relative h-48 w-full mb-3">
         
         {isAmazonUrl ? (
@@ -40,12 +40,12 @@ export default function BookCard({ book }: { book: any }) {
       <h3 className="font-semibold text-lg truncate">{book.title}</h3>
       <p className="text-sm text-gray-600">{book.author}</p>
       <p className="text-sm text-gray-500">{book.year_of_publication}</p>
-      <p className="mt-2 text-primary font-bold">
+      <p className="mt-2 text-[#23b5bf] font-bold">
         S/ {book.is_in_offer ? book.offer_price : book.price}
       </p>
       <button
         onClick={() => addToCart(book)}
-        className="mt-auto bg-primary text-white rounded-lg py-2 hover:bg-cyan-600 transition"
+        className="mt-auto bg-[#23b5bf] text-white rounded-2xl py-2 hover:bg-cyan-600 transition"
       >
         Agregar al carrito
       </button>

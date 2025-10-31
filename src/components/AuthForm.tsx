@@ -14,10 +14,10 @@ export default function AuthForm() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-dark text-light">
+    <div className="min-h-screen flex items-center justify-center bg-[#0d0d0d] text-[#ffffff]">
       <form
         onSubmit={handleSubmit}
-        className="bg-white text-dark p-8 rounded-xl shadow-md w-full max-w-md"
+        className="bg-white text-[#0d0d0d] p-8 rounded-xl shadow-md w-full max-w-md"
       >
         <h2 className="text-2xl font-bold mb-4 text-center">
           {mode === "login" ? "Iniciar Sesión" : "Crear Cuenta"}
@@ -60,7 +60,7 @@ export default function AuthForm() {
 
         <button
           type="submit"
-          className="w-full bg-primary text-white py-2 rounded hover:bg-cyan-600 transition"
+          className="w-full bg-[#23b5bf] text-white py-2 rounded hover:bg-cyan-600 transition"
         >
           {mode === "login" ? "Entrar" : "Registrarse"}
         </button>
@@ -69,7 +69,7 @@ export default function AuthForm() {
           {mode === "login" ? "¿No tienes cuenta?" : "¿Ya tienes cuenta?"}
           <button
             type="button"
-            className="text-primary ml-1 underline"
+            className="text-[#23b5bf] ml-1 underline"
             onClick={() => setMode(mode === "login" ? "register" : "login")}
           >
             {mode === "login" ? "Regístrate" : "Inicia sesión"}

@@ -38,13 +38,13 @@ export default function HomePage() {
           <button
             disabled={page === 1}
             onClick={() => setPage((p) => p - 1)}
-            className="px-4 py-2 bg-primary rounded disabled:opacity-50"
+            className="px-4 py-2 bg-[#23b5bf] rounded disabled:opacity-50"
           >
             ← Anterior
           </button>
           <button
             onClick={() => setPage((p) => p + 1)}
-            className="px-4 py-2 bg-primary rounded"
+            className="px-4 py-2 bg-[#23b5bf] rounded"
           >
             Siguiente →
           </button>

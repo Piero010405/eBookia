@@ -7,7 +7,7 @@ export default function CartSidebar({ onClose }: { onClose: () => void }) {
 
   return (
     <div className="fixed inset-0 bg-black/50 z-40 flex justify-end">
-      <div className="bg-white w-80 h-full shadow-lg flex flex-col text-dark animate-slide-left">
+      <div className="bg-white w-80 h-full shadow-lg flex flex-col text-[#0d0d0d] animate-slide-left">
         <div className="flex justify-between items-center p-4 border-b">
           <h2 className="text-xl font-bold">Tu Carrito</h2>
           <button onClick={onClose} className="text-gray-600 hover:text-black">
@@ -40,7 +40,7 @@ export default function CartSidebar({ onClose }: { onClose: () => void }) {
 
         <div className="border-t p-4">
           <p className="text-lg font-semibold mb-2">Total: S/ {total.toFixed(2)}</p>
-          <button className="w-full bg-primary text-white py-2 rounded hover:bg-cyan-600">
+          <button className="w-full bg-[#23b5bf] text-white py-2 rounded hover:bg-cyan-600">
             Pagar
           </button>
         </div>
